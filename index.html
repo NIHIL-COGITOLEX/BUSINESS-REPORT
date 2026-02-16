@@ -6,14 +6,19 @@
 
 <script>
   const correctPassword = "mypassword123";
+  let userPassword = "";
 
-  const userPassword = prompt("Enter password:");
+  while (userPassword !== correctPassword) {
+    userPassword = prompt("Enter password:");
 
-  if (userPassword !== correctPassword) {
-    document.body.innerHTML = "<h1>Access denied</h1>";
-    throw new Error("Wrong password");
+    if (userPassword === null) {
+      alert("Access cancelled");
+      window.location.href = "about:blank";
+      break;
+    }
   }
 </script>
+
 
 <link rel="stylesheet" href="styles.css">
 
