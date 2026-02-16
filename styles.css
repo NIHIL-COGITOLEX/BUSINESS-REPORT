@@ -169,4 +169,68 @@ td:contains("32.7%") {
     background: #ff3333;
 }
 
+/* ===== CHART SECTION (CLEAN GLASS STYLE) ===== */
+.chart-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 28px;
+    background: rgba(20, 20, 20, 0.85);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 0, 0, 0.15);
+    backdrop-filter: blur(8px);
+    box-shadow: 
+        0 10px 30px rgba(0,0,0,0.6),
+        0 0 20px rgba(255,0,0,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
 
+.chart-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 18px 45px rgba(0,0,0,0.75),
+        0 0 30px rgba(255,0,0,0.15);
+}
+
+/* ===== CHART CANVAS ===== */
+.chart-container canvas {
+    width: 70% !important;
+    height: 480px !important;
+    background: none;
+    border-radius: 12px;
+    padding: 14px;
+    align: center;
+}
+
+/* ===== BUTTON GROUP WRAPPER ===== */
+.chart-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* ===== INTERACTIVE BUTTONS (MINIMAL PREMIUM) ===== */
+button.toggle-btn {
+    font-family: 'Inter', sans-serif;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    color: #ff4d4d;
+    background: rgba(255, 0, 0, 0.08);
+    border: 1px solid rgba(255, 0, 0, 0.25);
+    border-radius: 999px;
+    transition: all 0.2s ease;
+}
+
+button.toggle-btn:hover {
+    background: rgba(255, 0, 0, 0.18);
+    border-color: rgba(255, 0, 0, 0.45);
+    transform: translateY(-1px);
+}
+
+button.toggle-btn:active {
+    transform: scale(0.97);
+}
