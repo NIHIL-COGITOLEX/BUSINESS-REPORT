@@ -29,7 +29,12 @@ th, td {
 .section {
     margin-top: 40px;
 }
+  
+  
 </style>
+  
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
 
@@ -54,6 +59,36 @@ th, td {
 <tr><td>⚪ N/A</td><td>1</td></tr>
 <tr><td>🚨 Zero Disbursement</td><td>8</td></tr>
 </table>
+  
+  <div class="section">
+<h2>📊 INTERACTIVE DASHBOARD CHARTS</h2>
+
+<button class="toggle-btn" onclick="toggleChart('branchChart')">
+Toggle Branch Overview
+</button>
+
+<div class="chart-container">
+<canvas id="branchChart"></canvas>
+</div>
+
+<button class="toggle-btn" onclick="toggleChart('tlChart')">
+Toggle TL Comparison
+</button>
+
+<div class="chart-container">
+<canvas id="tlChart"></canvas>
+</div>
+
+<button class="toggle-btn" onclick="toggleChart('distributionChart')">
+Toggle Performance Distribution
+</button>
+
+<div class="chart-container">
+<canvas id="distributionChart"></canvas>
+</div>
+
+</div>
+
 
 <h3>🔎 Executive Insight</h3>
 
@@ -345,5 +380,85 @@ Then branch crosses 100% sustainably.
 
 </div>
 
+<script>
+function toggleChart(id) {
+    const el = document.getElementById(id).parentElement;
+    el.style.display = el.style.display === "none" ? "block" : "none";
+}
+
+/* Branch Overview Chart */
+new Chart(document.getElementById("branchChart"), {
+    type: "bar",
+    data: {
+        labels: ["Target", "Disbursement", "Shortfall"],
+        datasets: [{
+            label: "₹ Amount",
+            data: [32600000, 25913275, 6686725]
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: ctx => "₹ " + ctx.raw.toLocaleString()
+                }
+            }
+        }
+    }
+});
+
+/* TL Comparison Chart */
+new Chart(document.getElementById("tlChart"), {
+    type: "bar",
+    data: {
+        labels: ["NITIN", "ABHISHEK", "SAHIL", "MUSTAFA", "RASHID"],
+        datasets: [{
+            label: "Disbursement",
+            data: [14176948, 6475308, 3437592, 1434995, 388432]
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: ctx => "₹ " + ctx.raw.toLocaleString()
+                }
+            }
+        }
+    }
+});
+
+/* Performance Distribution Pie */
+new Chart(document.getElementById("distributionChart"), {
+    type: "pie",
+    data: {
+        labels: [
+            "High Surplus",
+            "Small Surplus",
+            "Moderate Deficit",
+            "Low Performance",
+            "Zero"
+        ],
+        datasets: [{
+            data: [6, 2, 9, 3, 8]
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: ctx =>
+                        ctx.label + ": " + ctx.raw + " employees"
+                }
+            }
+        }
+    }
+});
+</script>
+
+  
 </body>
 </html>
