@@ -3,7 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <title>FEB_MONTH_TARGET_2026 - Complete Branch Performance Master Report</title>
+
+<script>
+  const correctPassword = "mypassword123";
+
+  const userPassword = prompt("Enter password:");
+
+  if (userPassword !== correctPassword) {
+    document.body.innerHTML = "<h1>Access denied</h1>";
+    throw new Error("Wrong password");
+  }
+</script>
+
 <link rel="stylesheet" href="styles.css">
+
 
 <style>
 body {
